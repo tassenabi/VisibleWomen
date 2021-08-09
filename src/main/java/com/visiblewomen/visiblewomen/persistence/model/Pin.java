@@ -20,6 +20,7 @@ public class Pin {
     private GeoJsonPoint geoJsonPoint;
     private DateTime timeHappened;
     private ArrayList<HarrasCategory> whatHappenedCategories;
+    private String mailAdress;
 
     @Getter
     public enum HarrasCategory {
