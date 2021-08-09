@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
+@RequestMapping("api/v1/")
 public class Controller {
 
     private final PinService pinService;
