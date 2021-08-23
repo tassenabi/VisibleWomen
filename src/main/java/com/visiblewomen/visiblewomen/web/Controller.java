@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -23,10 +22,9 @@ public class Controller {
         this.pinService = pinService;
     }
 
-    //ResponseEntity fehlt hier noch
     @GetMapping("/pin/{id}")
     public ResponseEntity<Pin> getPin(@PathVariable String id){
-        Optional<Pin> response = pinService.getPin(id);
+        Pin response = pinService.getPin(id);
 
         return response != null ?
                 ResponseEntity.ok(response) :
@@ -39,9 +37,14 @@ public class Controller {
         this.pinService.setPin(newPin);
     }
 
-    //ResponseEntity fehlt hier noch
     @GetMapping("/pins")
-    List<Pin> all() {
-        return pinService.getAllPins();
+    ResponseEntity<List<Pin>> getAllPins() {
+
+        List<Pin> response = pinService.getAllPins();
+
+        return response != null ?
+                ResponseEntity.ok(response) :
+                ResponseEntity.noContent().build();
+
     }
 }

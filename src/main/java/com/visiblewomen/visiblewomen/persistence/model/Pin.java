@@ -1,7 +1,6 @@
 package com.visiblewomen.visiblewomen.persistence.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -9,18 +8,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 
-@Getter
-@Setter
 @Document(collection = "pin")
+@Data
+@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force=true)
 public class Pin {
 
     @Id
-    private String id;
-    private String whatHappenedText;
-    private GeoJsonPoint geoJsonPoint;
-    private DateTime timeHappened;
-    private ArrayList<HarrasCategory> whatHappenedCategories;
-    private String mailAdress;
+    private final String id;
+    private final String whatHappenedText;
+    private final GeoJsonPoint geoJsonPoint;
+    private final DateTime timeHappened;
+    private final ArrayList<HarrasCategory> whatHappenedCategories;
+    private final String mailAdress;
 
     @Getter
     public enum HarrasCategory {
