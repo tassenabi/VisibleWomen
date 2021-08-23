@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+mongodb:
+image : mongo
+container_name: mongodb
+environment:
+  - PUID=1000
+  - PGID=1000
+volumes:
+  - /home/tassenabi/mongodb/database:/data/db
+ports:
+  - 27017:27017
+restart: unless-stopped
+#volumes:
+    # if you wish to setup additional user accounts specific per DB or with different roles you can use following entry point
+    #- "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+    # no --auth is needed here as presence of username and password add this option automatically
+command: mongod
