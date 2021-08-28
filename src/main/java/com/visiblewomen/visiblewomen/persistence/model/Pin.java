@@ -10,17 +10,17 @@ import java.util.ArrayList;
 
 @Document(collection = "pin")
 @Data
+//@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 @RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force=true)
 public class Pin {
 
     @Id
-    private final String id;
-    private final String whatHappenedText;
-    private final GeoJsonPoint geoJsonPoint;
-    private final DateTime timeHappened;
-    private final ArrayList<HarrasCategory> whatHappenedCategories;
-    private final String mailAdress;
+    private String id;
+    private String whatHappenedText;
+    private GeoJsonPoint geoJsonPoint;
+    private DateTime timeHappened;
+    private ArrayList<HarrasCategory> whatHappenedCategories;
+    private String mailAdress;
 
     @Getter
     public enum HarrasCategory {
