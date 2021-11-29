@@ -29,8 +29,6 @@ public class PinService {
 
     public List<Pin> getAllPins(){
 
-        List<Pin> pins = pinRepo.findAll();
-
-        return pins;
+        return pinRepo.findAll();
     }
 }

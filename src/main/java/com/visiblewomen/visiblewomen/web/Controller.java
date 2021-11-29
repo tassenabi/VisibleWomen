@@ -1,5 +1,7 @@
 package com.visiblewomen.visiblewomen.web;
 
+import com.visiblewomen.visiblewomen.dto.PinDto;
+import com.visiblewomen.visiblewomen.mapper.FrontendMapper;
 import com.visiblewomen.visiblewomen.persistence.model.Pin;
 import com.visiblewomen.visiblewomen.persistence.service.PinService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,12 @@ public class Controller {
     }
 
     @GetMapping("/pin/{id}")
-    public ResponseEntity<Pin> getPin(@PathVariable String id){
-        Pin response = pinService.getPin(id);
+    public ResponseEntity<PinDto> getPin(@PathVariable String id){
 
-        return response != null ?
-                ResponseEntity.ok(response) :
-                ResponseEntity.noContent().build();
+        Pin pin = pinService.getPin(id);
+        PinDto response = FrontendMapper.getPinDto(pin);
+
+        return ResponseEntity.ok(response);
 
     }
 
@@ -45,6 +47,5 @@ public class Controller {
         return response != null ?
                 ResponseEntity.ok(response) :
                 ResponseEntity.noContent().build();
-
     }
 }
